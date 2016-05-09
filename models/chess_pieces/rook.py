@@ -10,3 +10,5 @@ class Rook(ChessPiece):
         vertical_moves = [(0, col - y) for col in range(len_y)]
         return chain(horizontal_moves, vertical_moves)
 
+    def __str__(self):
+        return 'R'

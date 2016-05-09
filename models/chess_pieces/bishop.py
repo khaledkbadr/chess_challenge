@@ -11,3 +11,6 @@ class Bishop(ChessPiece):
             moves.add((delta * -1, row - y))
             moves.add((delta, row - y))
         return moves
+
+    def __str__(self):
+        return 'B'
