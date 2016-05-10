@@ -1,13 +1,14 @@
 import time
 import argparse
 from itertools import chain
+import copy
 from models.chessboard import ChessBoard
 from models.chess_pieces.queen import Queen
 from models.chess_pieces.king import King
 from models.chess_pieces.rook import Rook
 from models.chess_pieces.knight import Knight
 from models.chess_pieces.bishop import Bishop
-from models.helpers import place_piece_on_board
+from models.helpers import place_piece_on_board, pretty_print_board
 
 
 def start_boards(size_x, size_y, first_piece):
@@ -19,13 +20,32 @@ def start_boards(size_x, size_y, first_piece):
             yield board  # We use yield to save memory
 
 
+def valid_boards(board, pieces, pieces_count):
+    """Yield boards that has successful configuration for pieces"""
+    valid_boards = {board}
+    for piece in pieces:
+        _valid_boards, valid_boards = valid_boards, set()
+        for n, board in enumerate(_valid_boards):
+            for square in board.valid_squares - board.threatened_squares:
+                _board = copy.copy(board)
+                _placed = place_piece_on_board(_board, piece, *square)
+                if not _placed:
+                    continue
+                if _board.num_pieces == pieces_count:
+                    yield _board
+                else:
+                    valid_boards.add(_board)
+
+
 def solve(len_x, len_y, pieces):
     """Returns all configuration for the chess challenge"""
     first_piece, other_pieces = pieces[0], pieces[1:]
     solutions = set()
 
     for board in start_boards(len_x, len_y, first_piece):
-        pass
+        solutions.update(set(
+            str(s)
+            for s in valid_boards(board, other_pieces, len(pieces))))
     return solutions
 
 
@@ -50,7 +70,8 @@ def main():
         [King] * args.kings))
 
     results = solve(args.columns, args.rows, pieces)
-
+    for n, board in enumerate(results):
+        print(pretty_print_board(args.columns, board))
 if __name__ == '__main__':
     start_time = time.time()
     main()
