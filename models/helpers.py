@@ -6,7 +6,7 @@ def place_piece_on_board(board, piece, x, y):
     board.threatened_squares.update(moves)
     # we need to set the board coordinates in this order
     # as rows come first.
-    board.squares[y][x] = str(piece)
+    board.squares[y][x] = piece.representation
     board.num_pieces += 1
     return True
 

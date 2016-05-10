@@ -22,8 +22,3 @@ class ChessPiece(metaclass=ABCMeta):
                 else:
                     return
         return moves
-
-    @abstractmethod
-    def __str__(self):
-        pass
-

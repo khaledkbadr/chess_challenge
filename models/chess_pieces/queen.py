@@ -5,10 +5,9 @@ from .bishop import Bishop
 
 
 class Queen(ChessPiece):
+    representation = 'Q'
+
     @classmethod
     def get_moves(cls, board_dimensions, x, y):
         return chain(Rook.get_moves(board_dimensions, x, y),
                      Bishop.get_moves(board_dimensions, x, y))
-
-    def __str__(self):
-        return 'Q'

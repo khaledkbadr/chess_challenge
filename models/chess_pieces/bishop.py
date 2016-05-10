@@ -2,6 +2,8 @@ from .chesspiece import ChessPiece
 
 
 class Bishop(ChessPiece):
+    representation = 'B'
+
     @classmethod
     def get_moves(cls, board_dimensions, x, y):
         len_x, len_y = board_dimensions
@@ -11,6 +13,3 @@ class Bishop(ChessPiece):
             moves.add((delta * -1, row - y))
             moves.add((delta, row - y))
         return moves
-
-    def __str__(self):
-        return 'B'
