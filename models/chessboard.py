@@ -2,6 +2,7 @@ from .helpers import empty_copy
 
 
 class ChessBoard:
+    """Class to represent a chess board"""
     def __init__(self, m, n):
         self.len_x = m
         self.len_y = n

@@ -71,7 +71,8 @@ def main():
 
     results = solve(args.columns, args.rows, pieces)
     for n, board in enumerate(results):
-        print(pretty_print_board(args.columns, board))
+        pass
+        # print(pretty_print_board(args.columns, board))
 if __name__ == '__main__':
     start_time = time.time()
     main()
