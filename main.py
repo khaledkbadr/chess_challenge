@@ -50,6 +50,7 @@ def solve(len_x, len_y, pieces):
 
 
 def main():
+    """The start point of the application"""
     parser = argparse.ArgumentParser()
 
     parser.add_argument('-x', '--columns', type=int)
@@ -70,10 +71,13 @@ def main():
         [King] * args.kings))
 
     results = solve(args.columns, args.rows, pieces)
-    print(len(results))
     for n, board in enumerate(results):
-        pass
-        # print(pretty_print_board(args.columns, board))
+        # Print only 30 configuration at max
+        if n >= 10:
+            break
+        print(pretty_print_board(args.columns, board))
+
+    print(len(results), 'unique configurations found (only 10 is printed)')
 if __name__ == '__main__':
     start_time = time.time()
     main()
