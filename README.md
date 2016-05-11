@@ -22,7 +22,7 @@ Results
 To get help on program, just run it as following:
 
 ```
-> python main.py
+> python3 main.py
 usage: main.py [-h] [-x COLUMNS] [-y ROWS] [-q QUEENS] [-b BISHOPS]
                 [-r ROOKS] [-n KNIGHTS] [-k KINGS]
 
@@ -47,7 +47,7 @@ pieces on board:
 Examples
 ========
 ```
-> python main.py --rows=7 --columns=7 --queens=2 --kings=2 --bishops=2 --knights=1
+> python3 main.py --rows=7 --columns=7 --queens=2 --kings=2 --bishops=2 --knights=1
 
 3063828 unique configurations found (only 10 is printed)
 Time for solving problem 2413.5026681423187256 seconds
