@@ -14,7 +14,7 @@ class ChessBoardTest(unittest.TestCase):
         self.assertEqual(self.king.get_moves((3, 3), 0, 1), expected_moves)
 
     def test_valid_moves_available_for_King_in_board(self):
-        expected_moves = [(0, 0), (0, 1), (1, 0), (1, 1)]
+        expected_moves = {(0, 0), (0, 1), (1, 0), (1, 1)}
         self.assertEqual(
             self.king.get_valid_moves(self.chess_board, 0, 0),
             expected_moves

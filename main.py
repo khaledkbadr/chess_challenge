@@ -70,6 +70,7 @@ def main():
         [King] * args.kings))
 
     results = solve(args.columns, args.rows, pieces)
+    print(len(results))
     for n, board in enumerate(results):
         pass
         # print(pretty_print_board(args.columns, board))

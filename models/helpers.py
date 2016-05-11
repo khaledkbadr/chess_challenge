@@ -1,4 +1,5 @@
 def place_piece_on_board(board, piece, x, y):
+    """Return true if piece is placed on board successfully"""
     moves = piece.get_valid_moves(board, x, y)
     if not moves:
         return False
@@ -29,7 +30,7 @@ def empty_copy(obj):
 
 
 def pretty_print_board(len_x, board_string):
-
+    """Pretty print board representation"""
     def chunks(txt):
         for i in range(0, len(txt), len_x):
             yield txt[i:i + len_x]

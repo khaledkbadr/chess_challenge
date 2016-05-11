@@ -10,6 +10,7 @@ class ChessPiece(metaclass=ABCMeta):
 
     @classmethod
     def get_valid_moves(cls, board, x, y):
+        """Returns set of valid moves for the piece on the board"""
         if (x, y) in board.threatened_squares:
             return
         moves = [(x, y)]
@@ -21,4 +22,4 @@ class ChessPiece(metaclass=ABCMeta):
                     moves.append(move)
                 else:
                     return
-        return moves
+        return set(moves)
